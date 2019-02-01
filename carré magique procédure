@@ -1,0 +1,54 @@
+ALGORITHME carré magique avec PROCEDURE
+//BUT faire un programme qui affiche un carré magique
+//ENTREE pas grand chose
+//SORTIE un carré magique
+
+const: taille <- 5: ENTIER
+		
+
+var: x, y, i: ENTIER
+	t: tableau [1..taille, 1..taille] de ENTIER
+
+PROCEDURE calcul
+//BUT placement des valeures dans le tableau
+//ENTREE
+//SORTIE
+DEBUT
+	y <- taille div 2
+	x <- taille div 2-1
+
+	POUR i de 1 à taille*taille FAIRE
+		t[x, y] <- i
+		y <- y-1
+		x <- x+1
+		SI y<1 ALORS
+			y <- taille
+		FINSI
+		SI x>taille ALORS
+			x <-1
+		FINSI
+
+		SI t[x, y] = 0 ALORS
+				y <- y-1
+				x <- x-1
+					SI x=0 ALORS
+					x <- taille 
+					FINSI
+					FINSI
+					SI y<1 ALORS
+					y<- taille
+					FINSI
+		FINSI
+	FINPOUR
+FIN
+
+DEBUT
+	calcul
+	POUR y de 1 à taille FAIRE
+		POUR x de 1 à taille FAIRE
+		ECRIRE t[x, y], ('|')
+		FINPOUR
+	FINPOUR
+
+
+FIN

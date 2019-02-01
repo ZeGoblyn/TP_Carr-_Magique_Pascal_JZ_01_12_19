@@ -1,0 +1,59 @@
+
+Faire un programme qui affiche un carré magique, ce carré magique aura une dimension impaire, définit en constante.
+On pourra ainsi changé de carré en changeant la constante. Un carré magique est une table d'entier à 2 dimensions, dont toutes les colonnes, les lignes et diagonales ont la même somme.
+Vous devez utiliser OBLIGATOIREMENT un tableau à 2 dimensions.
+
+-1e entier ce trouve au nord du milieu de la table (position milieu -1)
+-on place les chiffres de façoncroissante en allant au nord-est de la position courant une seule fois
+-3e: si la place est déjà prise, on se déplace au Nord-ouest, jusqu'a ce qu'une place soit libre
+-4e: on s'arrête au carré de dimension (5x5), (7x7)
+-5e: le tableau est considéré comme sphérique. Si on arrive au-delà de la dernière colonne, on revient à la première colonne, idem pour les lignes
+
+
+ALGORITHME carré magique
+//BUT faire un programme qui affiche un carré magique
+//ENTREE pas grand chose
+//SORTIE un carré magique
+
+const: taille <- 5: ENTIER
+		
+
+var: x, y, i: ENTIER
+	t: tableau [1..taille, 1..taille] de ENTIER
+
+DEBUT
+	y <- taille div 2
+	x <- taille div 2-1
+
+	POUR i de 1 à taille*taille FAIRE
+		t[x, y] <- i
+		y <- y-1
+		x <- x+1
+		SI y<1 ALORS
+			y <- taille
+		FINSI
+		SI x>taille ALORS
+			x <-1
+		FINSI
+
+		SI t[x, y] = 0 ALORS
+				y <- y-1
+				x <- x-1
+					SI x=0 ALORS
+					x <- taille 
+					FINSI
+					SI y<1 ALORS
+					y<- taille
+					FINSI
+		FINSI
+	FINPOUR
+	POUR y de 1 à taille FAIRE
+		POUR x de 1 à taille FAIRE
+		ECRIRE t[x, y], ('|')
+		FINPOUR
+	FINPOUR
+
+
+FIN
+		
+
